@@ -1,3 +1,6 @@
+import java.util.LinkedList;
+import java.util.List;
+
 public class OverFlowTest {
 
     public static final void main(String[] args){
@@ -10,4 +13,5 @@ public class OverFlowTest {
             System.out.println("a - b < 0");    //会成功打印出来
         }
     }
+
 }
