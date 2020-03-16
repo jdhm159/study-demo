@@ -5,8 +5,8 @@ import org.junit.Test;
 
 public class SortingAlgorithm {
 
-    int[] array = {5, 4, 3, 2, 1};
-
+    int[] array = {5, 4, 3, 2, 1,7,9,0};
+    //将该序列升序排序
 
     private void showArray() {
         System.out.println(Arrays.stream(array).boxed().collect(Collectors.toList()));
@@ -18,6 +18,7 @@ public class SortingAlgorithm {
         array[y] = temp;
     }
 
+    //冒泡排序
     @Test
     public void bubbleSorting() {
         for (int i = 0; i < array.length - 1; i++) {
@@ -48,6 +49,7 @@ public class SortingAlgorithm {
         showArray();
     }
 
+    //插入排序
     @Test
     public void insertSorting() {
         for (int i = 1; i < array.length; i++) {
@@ -62,6 +64,7 @@ public class SortingAlgorithm {
         showArray();
     }
 
+    //快速排序
     private void quickSort(int from, int to) {
         if (from < to) {
             int first = array[from];        //基准值
@@ -87,8 +90,42 @@ public class SortingAlgorithm {
 
     @Test
     public void quickSorting() {
-        quickSort(0,array.length-1);
+        quickSort(0, array.length - 1);
         showArray();
     }
 
+    //堆排序，升序使用最大堆，降序使用最小堆,此处用升序
+    private void sink(int i, int length) {
+        int index;                    //要与父节点进行比较的子结点的索引
+        //i是否非叶子节点，length/2 -1 为最后一个非叶子结点的位置
+        if (i <= (length / 2 - 1)) {
+            if ((2 * i + 2) < length) {
+                index = (array[2 * i + 1] > array[2 * i + 2]) ? (2 * i + 1) : (2 * i + 2);
+            } else {
+                index = 2 * i + 1;
+            }
+            //子结点跟父结点进行比较
+            if (array[i] < array[index]) {
+                swap(i, index);
+                //交换了，则子结点的树结构可能会被扰乱了，需要重新调整
+                if (index <= (length / 2 - 1)) {
+                    sink(index, length);
+                }
+            }
+        }
+    }
+
+    @Test
+    public void heapSorting() {
+        //先构造最大堆
+        for (int i = (array.length / 2 - 1); i >= 0; i--) {
+            sink(i, array.length);
+        }
+        for (int i = 0; i < array.length - 1; i++) {
+            showArray();
+            swap(0, array.length - i - 1);
+            sink(0, array.length - i - 1);
+        }
+        showArray();
+    }
 }

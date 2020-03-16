@@ -1,7 +1,7 @@
-import java.lang.reflect.ParameterizedType;
+package dataStructureImpl;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 
@@ -23,18 +23,6 @@ public class HeapTest<T extends Comparable> {
         size = 0;
     }
 
-    public void add(T i) {
-        arrayList.add(i);
-        swim(++size);
-    }
-
-    private void swim(int i) {
-        while (i > 1 && compare(i, i >> 1) > 0) {
-            swap(i, (i >> 1));
-            i >>= 1;
-        }
-    }
-
     private int compare(int a, int b) {
         return arrayList.get(a).compareTo(arrayList.get(b));
     }
@@ -45,24 +33,16 @@ public class HeapTest<T extends Comparable> {
         arrayList.set(b, temp);
     }
 
-    public boolean isEmpty() {
-        return size == 0;
+    public void add(T i) {
+        arrayList.add(i);
+        swim(++size);
     }
 
-    public int size(){
-        return size;
-    }
-
-    @Override
-    public String toString() {
-        StringBuffer sB = new StringBuffer();
-        sB.append("[");
-        for (int i = 1; i < size; i++) {
-            sB.append(" " + arrayList.get(i) + ",");
+    private void swim(int i) {
+        while (i > 1 && compare(i, i >> 1) > 0) {
+            swap(i, (i >> 1));
+            i >>= 1;
         }
-        sB.append(" " + arrayList.get(size));
-        sB.append("]");
-        return sB.toString();
     }
 
     public T remove() {
@@ -90,8 +70,28 @@ public class HeapTest<T extends Comparable> {
 
     }
 
+    public boolean isEmpty() {
+        return size == 0;
+    }
+
+    public int size(){
+        return size;
+    }
+
+    @Override
+    public String toString() {
+        StringBuffer sB = new StringBuffer();
+        sB.append("[");
+        for (int i = 1; i < size; i++) {
+            sB.append(" " + arrayList.get(i) + ",");
+        }
+        sB.append(" " + arrayList.get(size));
+        sB.append("]");
+        return sB.toString();
+    }
+
     public static final void main(String[] args) {
-//        HeapTest<Integer> heapTest = new HeapTest<Integer>(Integer::new);     //Integer不存在默认无参构造器
+//        dataStructureImpl.HeapTest<Integer> heapTest = new dataStructureImpl.HeapTest<Integer>(Integer::new);     //Integer不存在默认无参构造器
 //        Integer integer = new Integer();                                      //这样会显示找不到构造器，Integer::new这样的构造器引用是错误的
         HeapTest<Integer> heapTest = new HeapTest<Integer>(() -> 0);        //只能老老实实写lambda表达式
         heapTest.add(1);
