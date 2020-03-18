@@ -22,8 +22,11 @@ public class CollectionTest {
         Map<String,String> map = new HashMap<>();
         map.put(null,null);
 
-        Map<String,String> map1 = new TreeMap<>();
-        map.put(null,null);
+        //TreeMap不允许插入键值为null的对
+        TreeMap<String,String> map1 = new TreeMap<>();
+//        map1.put(null,null);
+        map1.put("",null);
+
 
         //ConcurrentHashMap同样对null零容忍
         ConcurrentHashMap<String,String> concurrentHashMap = new ConcurrentHashMap<>();
