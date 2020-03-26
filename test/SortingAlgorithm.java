@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class SortingAlgorithm {
 
-    int[] array = {5, 4, 3, 2, 1,7,9,0};
+    int[] array = {5, 4, 3, 2, 1, 7, 9, 0};
     //将该序列升序排序
 
     private void showArray() {
@@ -61,6 +61,12 @@ public class SortingAlgorithm {
             }
             array[p + 1] = temp;
         }
+        //
+//        for (int i = 1; i < array.length; i++) {
+//            for (int j = i; j > 0 && array[j] < array[j - 1]; j--) {
+//                swap(j, j - 1);
+//            }
+//        }
         showArray();
     }
 

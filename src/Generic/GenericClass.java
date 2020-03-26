@@ -27,7 +27,11 @@ public class GenericClass implements Comparable<GenericClass> {
     }
 
     public void bar(){
-        System.out.println(this.a);
+        System.out.println(a);
+    }
+
+    public void foobar(){
+        System.out.println(a);
     }
 
 }

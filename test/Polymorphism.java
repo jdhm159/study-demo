@@ -29,15 +29,18 @@ public class Polymorphism {
         // 但如果调用父类中也存在，子类给重写的方法，则不需要强制转换，而且通过动态绑定绑定到了子类重写的方法上。
         // 要解释这个现象，其实很简单，
         // 核心就是面向对象的思想。
-        // 动物不一定会游泳
+        // 鸟不一定会游泳
         // 但如果子类成功重写了父类方法，则就由动态绑定绑定到子类的方法
     }
 
     @Test
     public void sd(){
         GenericClass t = new ChildClass();      //t 存在两个域a，super.a = 0 / this.a = 1
-        t.bar();                    //output: 1   通过子类重写的bar方法输出了子类的域
-        System.out.println(t.a);    //output: 0   因为域没有多态，所以由编译器解析的域a来自super，编译器观察的是声明类型
+        t.bar();                                  //output: 1   通过子类重写的bar方法输出了子类的域
+        t.foobar();                               //output: 0   通过父类的方法foobar方法输出了父类的域
+        System.out.println(t.a);                  //output: 0   因为域没有多态，所以由编译器解析的域a来自GenericClass，编译器观察的是声明类型
+        System.out.println(((ChildClass)t).a);    //output: 1   因为域没有多态，所以由编译器解析的域a来自ChildClass，编译器观察的是声明类型
+
 
         //这样的确会很让人混淆
         //java编译原理原话：
