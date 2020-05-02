@@ -1,5 +1,5 @@
-import Generic.ChildClass;
-import Generic.GenericClass;
+import generic.ChildClass;
+import generic.GenericClass;
 import org.junit.Test;
 
 public class Polymorphism {
@@ -16,7 +16,7 @@ public class Polymorphism {
     public void tb() {
         //测试应用多态时变量的类型到底是什么
         GenericClass t = new ChildClass();
-        System.out.println(t.getClass());   //output:class Generic.ChildClass
+        System.out.println(t.getClass());   //output:class generic.ChildClass
 
         //测试继承方法能否被调用
 //        t.fucTest();                  //显示找不到方法，猜测原因是 使用了多态，用父类的类型做了声明，因此只会到 实例化的父类对象域中找对应的方法

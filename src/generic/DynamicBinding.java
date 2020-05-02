@@ -1,14 +1,14 @@
-package Generic;
+package generic;
 
 public class DynamicBinding {
     public static void main(String[] args) {
 
         A a = new B();
         int result = a.getResult();
-        System.out.println("result: "+ result);
+        System.out.println("ThreadReturn: "+ result);
 
         int result1 = ((A)a).getResult();       //强制类型转换改变的是声明类型
-        System.out.println("result: "+ result);
+        System.out.println("ThreadReturn: "+ result);
     }
 }
 

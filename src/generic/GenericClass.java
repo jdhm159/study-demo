@@ -1,7 +1,4 @@
-package Generic;
-
-import java.util.ArrayList;
-import java.util.List;
+package generic;
 
 public class GenericClass implements Comparable<GenericClass> {
     //可以不传传类型参数，没指定变量，本质就是Comparable<Object>
@@ -32,6 +29,14 @@ public class GenericClass implements Comparable<GenericClass> {
 
     public void foobar(){
         System.out.println(a);
+    }
+
+    public Number far(){
+        return 1;
+    }
+
+    private void fars(){
+        return;
     }
 
 }

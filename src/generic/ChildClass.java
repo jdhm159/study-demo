@@ -1,4 +1,4 @@
-package Generic;
+package generic;
 
 public class ChildClass extends GenericClass {
     //从父类那里继承来的Comparable<GenericClass>  或者是 Comparable<Object>
@@ -28,6 +28,11 @@ public class ChildClass extends GenericClass {
         System.out.println(a);
     }
 
+    //覆盖超类方法，返回类型也要与原方法兼容，定义为原返回类型的子类型
+//    public String far(){
+    public Integer far(){
 
+        return 1;
+    }
 
 }

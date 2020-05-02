@@ -1,4 +1,4 @@
-package Generic;
+package generic;
 
 //这三种写法各有不同
 
@@ -6,7 +6,7 @@ package Generic;
 //public class GenericWildcard<T extends Comparable> {
 //
 //    public static final void main(String[] args){
-//        Generic.GenericWildcard<Generic.ChildClass> childClassGenericWildcard = new Generic.GenericWildcard<>();
+//        generic.GenericWildcard<generic.ChildClass> childClassGenericWildcard = new generic.GenericWildcard<>();
 //    }
 //}
 
@@ -19,9 +19,9 @@ public class GenericWildcard<T extends Comparable<? super T>> {
 }
 
 //这个写法限制最多，要求类型参数自身实现Comparable<T>接口
-//public class Generic.GenericWildcard<T extends Comparable<T>> {
+//public class generic.GenericWildcard<T extends Comparable<T>> {
 //
 //    public static final void main(String[] args){
-//        Generic.GenericWildcard<Generic.ChildClass> childClassGenericWildcard = new Generic.GenericWildcard<>();
+//        generic.GenericWildcard<generic.ChildClass> childClassGenericWildcard = new generic.GenericWildcard<>();
 //    }
 //}
